@@ -137,8 +137,23 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
 }
+
+@layer utilities {
+  .portfolio-gradient {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
