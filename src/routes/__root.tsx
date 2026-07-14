@@ -77,17 +77,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Juan Dela Cruz | Personal Portfolio" },
-      { name: "description", content: "Personal portfolio of Juan Dela Cruz, a BS Information Technology student passionate about web development and design." },
-      { name: "author", content: "Juan Dela Cruz" },
-      { property: "og:title", content: "Juan Dela Cruz | Personal Portfolio" },
-      { property: "og:description", content: "Personal portfolio of Juan Dela Cruz, a BS Information Technology student passionate about web development and design." },
+      { title: "Ryan Abergas Dagodog | Personal Portfolio" },
+      { name: "description", content: "Personal portfolio of Ryan Abergas Dagodog, an Associate in Computer Technology student passionate about web development and software engineering." },
+      { name: "author", content: "Ryan Abergas Dagodog" },
+      { property: "og:title", content: "Ryan Abergas Dagodog | Personal Portfolio" },
+      { property: "og:description", content: "Personal portfolio of Ryan Abergas Dagodog, an Associate in Computer Technology student passionate about web development and software engineering." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@juandelacruz" },
+      { name: "twitter:site", content: "@zyrodagodog" },
 
     ],
     links: [
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
@@ -106,6 +119,19 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
       </head>
       <body>
         {children}
